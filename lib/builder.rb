@@ -1,4 +1,5 @@
 require 'erb'
+require 'fileutils'
 require_relative './parser'
 
 module Builder
