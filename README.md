@@ -14,7 +14,7 @@ The command line tool: `bin/lp` will generate html files based on the inputs pro
 
 Usage:
 
-> bin/lp <TAXONOMY_XML> <DESTINATIONS_XML> <OUTPUT_DIR>
+> bin/lp taxonomy_xml destinations_xml output_dir
 
 To run the code locally:
 
