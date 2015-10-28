@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Lonely Planet</title>
+    <link href="static/all.css" media="screen" rel="stylesheet" type="text/css">
+    <style>
+
+      li {
+        list-style: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="header">
+        <div id="logo"></div>
+        <h1>Lonely Planet: <%= node.title %></h1>
+      </div>
+
+      <div id="wrapper">
+        <div id="sidebar">
+          <div class="block">
+            <h3>Navigation</h3>
+            <div class="content">
+              <div class="inner">
+                <ul>
+                  <% level = 0 %>
+                  <% node.while_parent do |parent| %>
+                    <% level += 1 %>
+                    <li style="text-indent: <%= indent(level) %>">
+                      <a href="<%= "#{parent.atlas_node_id}.html" %>"><%= parent.title %></a>
+                    </li>
+                  <% end %>
+                  <li style="text-indent: <%= indent(level + 1) %>">
+                    <a href="#"><%= node.title %></a>
+                  </li>
+                  <% node.nodes.each do |n| %>
+                    <li style="text-indent: <%= indent(level + 2) %>">
+                      <a href="<%= "#{n.atlas_node_id}.html" %>"><%= n.title %></a>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="main">
+          <div class="block">
+            <div class="secondary-navigation">
+              <ul>
+                <li class="first"><a href="#"><%= node.title %></a></li>
+              </ul>
+              <div class="clear"></div>
+            </div>
+            <div class="content">
+              <% if destination.overview %>
+                <div class="inner">
+                  <h4>Overview</h4>
+                  <p><%= destination.overview %></p>
+                </div>
+              <% end %>
+
+              <% if destination.history %>
+                <div class="inner">
+                  <h4>History</h4>
+                  <p><%= destination.history %></p>
+                </div>
+              <% end %>
+
+              <% if destination.money_and_costs %>
+                <div class="inner">
+                  <h4>Money and Costs</h4>
+                  <p><%= destination.money_and_costs %></p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require 'pathname'
+require File.expand_path("../lib/builder", File.dirname(__FILE__))
+
+if ARGV.size != 3
+  puts "Usage: lp <TAXONOMY_XML> <DESTINATIONS_XML> <OUTPUT_DIR>"
+  exit
+end
+
+taxonomy_file = File.expand_path(ARGV[0])
+raise ArgumentError, "#{ARGV[0]} must be a file" unless File.exists?(taxonomy_file)
+
+destinations_file = File.expand_path(ARGV[1])
+raise ArgumentError, "#{ARGV[1]} must be a file" unless File.exists?(destinations_file)
+
+output_dir = Pathname.new(ARGV[2])
+raise ArgumentError, "#{ARGV[2]} must be a directory" unless output_dir.directory?
+
+Builder::Prepare.create_pages(taxonomy_file, destinations_file, output_dir)
