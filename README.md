@@ -14,11 +14,15 @@ The command line tool: `bin/lp` will generate html files based on the inputs pro
 
 Usage:
 
-> bin/lp taxonomy_xml destinations_xml output_dir
+```shell
+bin/lp taxonomy_xml destinations_xml output_dir
+```
 
 To run the code locally:
 
 Ex:
 
-> mkdir result
-> ruby bin/lp spec/fixtures/taxonomy.xml spec/fixtures/destinations.xml result/
+```shell
+mkdir result
+ruby bin/lp spec/fixtures/taxonomy.xml spec/fixtures/destinations.xml result/
+```
